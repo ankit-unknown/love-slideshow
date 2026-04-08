@@ -1,0 +1,67 @@
+:root {
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+  --space-1:0.25rem; --space-2:0.5rem;  --space-3:0.75rem;
+  --space-4:1rem;    --space-5:1.25rem; --space-6:1.5rem;
+  --space-8:2rem;    --space-10:2.5rem; --space-12:3rem;
+  --space-16:4rem;
+
+  --color-bg:             #1a0810;
+  --color-surface:        #220d14;
+  --color-surface-2:      #2a1019;
+  --color-surface-offset: #31141e;
+  --color-border:         rgba(255, 180, 200, 0.15);
+
+  --color-text:           #fce8ef;
+  --color-text-muted:     #d4a0b0;
+  --color-text-faint:     #9a6070;
+
+  --color-primary:        #e8607a;
+  --color-primary-hover:  #f07090;
+  --color-accent:         #ff9bb5;
+
+  --radius-sm:0.375rem; --radius-md:0.5rem;
+  --radius-lg:0.75rem;  --radius-xl:1rem;
+  --radius-2xl:1.5rem;  --radius-full:9999px;
+
+  --font-display: 'Great Vibes', cursive;
+  --font-body:    'Nunito', sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
