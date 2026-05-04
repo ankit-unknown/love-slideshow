@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slideshow from './components/Slideshow';
+import LockScreen from './components/LockScreen';
 import './App.css';
 
 function App() {
+  const [unlocked, setUnlocked] = useState(false);
+
   return (
     <div className="app">
+      {!unlocked && <LockScreen onUnlock={() => setUnlocked(true)} />}
+
       <div className="hearts-bg" aria-hidden="true">
         {[...Array(12)].map((_, i) => (
           <span key={i} className={`heart heart-${i + 1}`}>♥</span>

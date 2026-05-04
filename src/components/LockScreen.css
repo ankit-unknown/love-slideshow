@@ -1,0 +1,177 @@
+.ls-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  overflow: hidden;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.ls-unlocking {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Orbs */
+.ls-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.18;
+  animation: orbFloat 15s ease-in-out infinite alternate;
+}
+.ls-orb-a {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #e8607a, transparent 70%);
+  top: -120px; left: -100px;
+}
+.ls-orb-b {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, #d4a855, transparent 70%);
+  bottom: -100px; right: -80px;
+  animation-delay: -7.5s;
+}
+@keyframes orbFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 25px) scale(1.1); }
+}
+
+/* Top */
+.ls-top { text-align: center; position: relative; z-index: 2; }
+.ls-icon { font-size: 2rem; margin-bottom: 8px; }
+.ls-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-accent);
+  text-shadow: 0 0 30px rgba(232,96,122,0.5);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+.ls-sub {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Dots */
+.ls-dots {
+  display: flex;
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+.ls-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ls-dot-filled {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-gold));
+  border-color: var(--color-gold);
+  box-shadow: 0 0 12px rgba(232,96,122,0.7), 0 0 24px rgba(212,168,85,0.3);
+  transform: scale(1.1);
+}
+.ls-shake {
+  animation: lsShake 0.4s ease;
+}
+@keyframes lsShake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-9px); }
+  40%     { transform: translateX(9px); }
+  60%     { transform: translateX(-6px); }
+  80%     { transform: translateX(6px); }
+}
+
+/* Ornament */
+.ls-ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+.ls-orn-line {
+  display: block;
+  width: 44px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold));
+  box-shadow: 0 0 8px rgba(212,168,85,0.4);
+}
+.ls-orn-line-r {
+  background: linear-gradient(270deg, transparent, var(--color-gold));
+}
+.ls-orn-heart {
+  font-size: 13px;
+  color: var(--color-primary);
+  animation: heartPulse 2.8s ease-in-out infinite;
+}
+@keyframes heartPulse {
+  0%,100% { transform: scale(1); opacity: 0.7; }
+  50%     { transform: scale(1.4); opacity: 1; }
+}
+
+/* Keypad */
+.ls-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 72px);
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+.ls-key {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: rgba(255,240,245,0.04);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+.ls-key:hover {
+  background: rgba(232,96,122,0.14);
+  border-color: rgba(232,96,122,0.5);
+  box-shadow: 0 0 20px rgba(232,96,122,0.3);
+}
+.ls-key:active { transform: scale(0.9); }
+.ls-key-empty { visibility: hidden; pointer-events: none; }
+.ls-key-del {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Message */
+.ls-msg {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s;
+}
+.ls-msg-error  { color: var(--color-primary) !important; }
+.ls-msg-success { color: var(--color-gold) !important; }
+
+@media (max-width: 480px) {
+  .ls-keypad { grid-template-columns: repeat(3, 64px); gap: 12px; }
+  .ls-key    { width: 64px; height: 64px; font-size: 1.1rem; }
+}
