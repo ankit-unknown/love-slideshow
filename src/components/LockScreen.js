@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import './LockScreen.css';
 
-const PASSCODE = '612008';
+const PASSCODE = '788909';
 const KEYS = ['1','2','3','4','5','6','7','8','9','','0','del'];
 
 export default function LockScreen({ onUnlock }) {
